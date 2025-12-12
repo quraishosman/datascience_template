@@ -1,40 +1,42 @@
 """
-Main script to download or generate raw data → data/raw/
+SQLAlchemy database connection and session management.
+Works with PostgreSQL, SQLite, etc. via .env or environment variables.
 """
-import pandas as pd
-from pathlib import Path
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, scoped_session
+from urllib.parse import quote_plus
+import os
 from src.utils import logger
-from .s3_utils import download_from_s3
+
+# Read from .env or environment
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://analyst:supersecretpassword@localhost:5432/analytics"
+)
+
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True,
+    pool_recycle=3600,
+    echo=False  # set True for SQL logging
+)
+
+SessionLocal = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
+Base = declarative_base()
 
 
-def make_dataset(source: str = "local") -> None:
-    """
-    Create raw dataset in data/raw/
-    Options: "local" (sample), "s3", "api", etc.
-    """
-    raw_path = Path("data/raw")
-    raw_path.mkdir(parents=True, exist_ok=True)
-
-    if source == "sample":
-        logger.info("Generating sample dataset for onboarding")
-        data = pd.DataFrame({
-            "id": range(1, 1001),
-            "date": pd.date_range("2024-01-01", periods=1000, freq="H"),
-            "sales": pd.Series(range(1000)).sample(frac=1).values,
-            "item_id": pd.np.random.randint(1000, 1100, 1000),
-            "store_id": pd.np.random.randint(10, 20, 1000),
-            "price": pd.np.round(pd.np.random.uniform(10, 100, 1000), 2)
-        })
-        filepath = raw_path / "sample_data.parquet"
-        data.to_parquet(filepath, index=False)
-        logger.success(f"Sample dataset created → {filepath}")
-
-    elif source == "s3":
-        download_from_s3(bucket="my-data-bucket", key="raw/sales.parquet", local_path=raw_path / "sales.parquet")
-
-    else:
-        raise ValueError("source must be 'sample' or 's3'")
+def get_engine():
+    return engine
 
 
-if __name__ == "__main__":
-    make_dataset(source="sample")
+def get_session():
+    """Dependency for FastAPI or manual use"""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+logger.info(f"Database connected → {DATABASE_URL.split('@')[-1]}")
