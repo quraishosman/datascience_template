@@ -1,0 +1,22 @@
+# Default project configuration (can be overridden by .env or secrets)
+project_name: datascience_template
+environment: development
+seed: 42
+
+raw_data_path: data/raw
+processed_data_path: data/processed
+models_path: models
+reports_path: reports
+
+postgres_host: localhost
+postgres_port: 5432
+postgres_db: analytics
+postgres_user: analyst
+postgres_password: supersecretpassword
+
+s3_endpoint: http://localhost:9000
+aws_access_key_id: minioadmin
+aws_secret_access_key: minioadmin
+
+mlflow_tracking_uri: http://localhost:5000
+mlflow_experiment_name: baseline
