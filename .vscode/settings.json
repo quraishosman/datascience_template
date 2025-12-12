@@ -1,50 +1,46 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Run Current Python File",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal",
-      "justMyCode": false
-    },
-    {
-      "name": "Run Current Notebook Cell",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal",
-      "justMyCode": false,
-      "purpose": ["debug-in-terminal"]
-    },
-    {
-      "name": "Streamlit: Current File",
-      "type": "debugpy",
-      "request": "launch",
-      "module": "streamlit",
-      "args": ["run", "${file}", "--server.port=8501"],
-      "console": "integratedTerminal",
-      "justMyCode": false
-    },
-    {
-      "name": "Python: src/main.py",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/main.py",
-      "console": "integratedTerminal",
-      "justMyCode": false,
-      "envFile": "${workspaceFolder}/.env"
-    },
-    {
-      "name": "Attach to Docker (debugpy)",
-      "type": "debugpy",
-      "request": "attach",
-      "connect": { "host": "localhost", "port": 5678 },
-      "pathMappings": [
-        { "localRoot": "${workspaceFolder}", "remoteRoot": "/workspace" }
-      ],
-      "justMyCode": false
-    }
-  ]
+  // Python
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.linting.enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.ruffEnabled": true,
+  // or flake8 if you prefer
+  "python.formatting.provider": "black",
+  "python.sortImports.path": "isort",
+
+  // Editor
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+  "editor.rulers": [88, 120],
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+
+  // Files & folders
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.venv": true,
+    "**/.ipynb_checkpoints": true
+  },
+  "search.exclude": {
+    "**/.venv": true,
+    "**/data": true,
+    "**/models": true
+  },
+
+  // Jupyter
+  "jupyter.askForKernelRestart": false,
+  "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
+
+  // Terminal
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+
+  // Python path for imports
+  "python.analysis.extraPaths": ["./src"]
 }
