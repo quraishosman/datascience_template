@@ -15,7 +15,7 @@
       "command": "make lint",
       "group": "none",
       "presentation": { "echo": true, "reveal": "always", "panel": "dedicated" },
-      "problemMatcher": ["$flake8", "$mypy"]
+      "problemMatcher": ["$python"]
     },
     {
       "label": "Run tests",
@@ -55,7 +55,7 @@
       "label": "Poetry: Activate shell",
       "type": "shell",
       "command": "poetry shell",
-      # type 'exit' to leave",
+      // type 'exit' to leave
       "presentation": { "echo": true, "reveal": "always", "panel": "new" },
       "runOptions": { "runOn": "folderOpen" }
     }
