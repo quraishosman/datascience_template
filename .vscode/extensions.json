@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "charliermarsh.ruff",
+    "kevinrose.vsc-python-indent",
+    "ms-toolsai.jupyter",
+    "ms-azuretools.vscode-docker",
+    "github.copilot",
+    "github.copilot-chat",
+    "eamodio.gitlens",
+    "bierner.markdown-preview-enhanced"
+  ]
+}
