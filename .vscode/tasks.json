@@ -1,0 +1,63 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Format code (black + isort)",
+      "type": "shell",
+      "command": "make format",
+      "group": "none",
+      "presentation": { "echo": true, "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint (mypy + ruff)",
+      "type": "shell",
+      "command": "make lint",
+      "group": "none",
+      "presentation": { "echo": true, "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": ["$flake8", "$mypy"]
+    },
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "make test",
+      "group": "test",
+      "presentation": { "echo": true, "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Test with coverage (HTML)",
+      "type": "shell",
+      "command": "make coverage",
+      "group": "test",
+      "presentation": { "echo": true, "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Start services (Postgres + MinIO + MLflow)",
+      "type": "shell",
+      "command": "make up",
+      "presentation": { "echo": true, "reveal": "always", "panel": "new" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop services",
+      "type": "shell",
+      "command": "make down",
+      "presentation": { "echo": true, "reveal": "silent" }
+    },
+    {
+      "label": "Clean project",
+      "type": "shell",
+      "command": "make clean",
+      "presentation": { "echo": true, "reveal": "always" }
+    },
+    {
+      "label": "Poetry: Activate shell",
+      "type": "shell",
+      "command": "poetry shell",
+      # type 'exit' to leave",
+      "presentation": { "echo": true, "reveal": "always", "panel": "new" },
+      "runOptions": { "runOn": "folderOpen" }
+    }
+  ]
+}
