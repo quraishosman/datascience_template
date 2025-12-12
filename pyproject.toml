@@ -1,0 +1,32 @@
+[project]
+name = "my-data-project"
+version = "0.1.0"
+description = "Professional data analysis template"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "seaborn",
+    "plotly",
+    "jupyterlab",
+    "streamlit",
+    "python-dotenv",
+    "polars",
+    "duckdb",
+    "pyarrow",
+    "openpyxl"
+]
+
+[project.optional-dependencies]
+dev = ["black", "ruff", "mypy", "pre-commit"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
