@@ -1,0 +1,105 @@
+# Python & Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pyenv/
+.venv*/
+__pypackages__/
+
+# Poetry
+.poetry/
+
+# Pip
+pip-wheel-metadata/
+pip-log.txt
+pip-delete-this-directory.txt
+.cache
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.coverage
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# VS Code
+.vscode/settings.json.lock
+.history/
+
+# Data (never commit real data)
+data/raw/*
+data/interim/*
+data/processed/*
+data/external/*
+!data/*/.gitkeep
+
+# Models & large files
+models/*
+!models/.gitkeep
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.onnx
+
+# Reports & outputs
+reports/figures/*
+reports/*.pdf
+reports/*.html
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# MLflow
+mlflow/
+mlruns/
+
+# DVC
+.dvc/cache/
+.dvc/tmp/
+.dvc/plots/
+
+# Mac/Win/Linux
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Logs
+*.log
+logs/
+
+# Build & dist
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Secrets & env
+.env
+.env.local
+.env.*.local
+secrets.yaml
+
+# IDEs
+.idea/
+*.sublime-*
+.vscode/*.code-workspace
