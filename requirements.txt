@@ -1,0 +1,36 @@
+# === Core data stack ===
+pandas
+numpy
+scipy
+
+# === Visualization ===
+matplotlib
+seaborn
+plotly
+kaleido                 # for plotly.to_image() / static exports
+
+# === Jupyter ecosystem ===
+jupyterlab
+ipykernel
+ipywidgets
+notebook                # still needed for some extensions
+
+# === Utilities ===
+tqdm
+python-dotenv
+requests
+openpyxl                # Excel read/write
+pyarrow                 # parquet, feather, fast IO
+
+# === Modern data engines ===
+polars                  # fastest DataFrame library in 2025
+duckdb                  # in-process SQL engine (amazing with polars/parquet)
+
+# === Web dashboards ===
+streamlit
+
+# === Code quality (dev dependencies – install with pip install -e ".[dev]")
+black
+ruff
+mypy
+pre-commit
